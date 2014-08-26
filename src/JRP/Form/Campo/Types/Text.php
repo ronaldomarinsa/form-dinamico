@@ -28,6 +28,6 @@ class Text extends CampoAbstract implements Campo{
         $campoBase = $this->getCampoBase();
         $this->setCampo("<input {$campoBase}>");
 
-        echo $this->getCampo();
+        return $this->getCampo();
     }
 }

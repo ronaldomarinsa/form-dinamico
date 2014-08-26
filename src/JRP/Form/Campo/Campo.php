@@ -3,6 +3,6 @@
 namespace JRP\Form\Campo;
 
 
-class Campo {
-
+interface Campo {
+    public function render();
 } 

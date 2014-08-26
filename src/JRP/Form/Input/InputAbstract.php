@@ -1,10 +1,10 @@
 <?php
 
-namespace JRP\Form\Campo;
+namespace JRP\Form\Input;
 
 
-class CampoAbstract {
-    private $parametros = ['type', 'name', 'value'];
+class InputAbstract {
+    private $parametros = ['type', 'name', 'value', 'class'];
     private $isRequired = false;
     private $campoBase;
     private $campo;
@@ -55,6 +55,15 @@ class CampoAbstract {
 
     public final function getValor() {
         return $this->getParametro('value');
+    }
+
+    public function setClass($class) {
+        $this->setParametro('class', $class);
+        return $this;
+    }
+
+    public function getClass() {
+        return $this->getParametro('class');
     }
 
     public final function required() {

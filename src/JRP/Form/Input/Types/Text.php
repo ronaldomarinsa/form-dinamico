@@ -1,12 +1,12 @@
 <?php
 
-namespace JRP\Form\Campo\Types;
+namespace JRP\Form\Input\Types;
 
 
-use JRP\Form\Campo\Campo;
-use JRP\Form\Campo\CampoAbstract;
+use JRP\Form\Input\Input;
+use JRP\Form\Input\InputAbstract;
 
-class Text extends CampoAbstract implements Campo{
+class Text extends InputAbstract implements Input{
 
     public function __construct($nome, $valor = null) {
         parent::__construct($nome, $valor);

@@ -6,7 +6,7 @@ Projeto para formulário dinâmico criado utilizando os conceitos de OO e Design
 Versão
 ----
 
-0.0.1
+0.1.0
 
 Utilização
 --------------

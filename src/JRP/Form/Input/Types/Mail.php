@@ -3,26 +3,17 @@
 namespace JRP\Form\Input\Types;
 
 
-use JRP\Form\Input\Input;
 use JRP\Form\Input\InputAbstract;
+use JRP\Form\Input\InputInterface;
 
-class Mail extends InputAbstract implements Input{
+class Mail extends InputAbstract implements InputInterface{
 
     public function __construct($nome, $valor = null) {
         parent::__construct($nome, $valor);
         parent::setTipo('email');
     }
 
-    public function setPlaceholder($placeholder) {
-        $this->setParametro('placeholder', $placeholder);
-        return $this;
-    }
-
-    public function getPlaceholder() {
-        return $this->getParametro('placeholder');
-    }
-
-    public function render()
+    public function createField()
     {
         $this->gerarCampoBase();
         $campoBase = $this->getCampoBase();

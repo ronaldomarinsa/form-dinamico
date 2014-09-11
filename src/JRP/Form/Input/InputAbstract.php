@@ -3,13 +3,13 @@
 namespace JRP\Form\Input;
 
 
-class InputAbstract {
-    private $parametros = ['type', 'name', 'value', 'class'];
+abstract class InputAbstract {
+    public $parametros = ['type', 'name', 'value', 'class'];
     private $isRequired = false;
     private $campoBase;
     private $campo;
 
-    public function __construct($nome, $valor = null) {
+    protected function __construct($nome, $valor = null) {
         $this->setParametro('name', $nome)
              ->setParametro('value', $valor);
     }
@@ -24,11 +24,9 @@ class InputAbstract {
     }
 
     protected function getParametro($parametroIdentificacao) {
-        if(isset($this->parametro[$parametroIdentificacao])) {
-            return $this->parametro[$parametroIdentificacao];
+        if(isset($this->parametros[$parametroIdentificacao])) {
+            return $this->parametros[$parametroIdentificacao];
         }
-
-        exit("Erro: O parâmetro '{$parametroIdentificacao}' não foi setado");
     }
 
     public final function setTipo($tipo) {
@@ -101,5 +99,14 @@ class InputAbstract {
 
     public final function getCampo() {
         return $this->campo;
+    }
+
+    public function setPlaceholder($placeholder) {
+        $this->setParametro('placeholder', $placeholder);
+        return $this;
+    }
+
+    public function getPlaceholder() {
+        return $this->getParametro('placeholder');
     }
 }

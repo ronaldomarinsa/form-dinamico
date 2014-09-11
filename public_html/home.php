@@ -1,6 +1,3 @@
-<?php
-    use JRP\HTML\Alert\Alert;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,20 +16,16 @@
 <div class="container">
 
     <?php
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $nome = $_POST['nome'];
-            $mail = $_POST['mail'];
+        $validator->setMsgSuccess('Seu e-mail foi cadastrado com sucesso em nossa newsletter!');
 
-            if(!empty($nome) && filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                $alert =  alert::success('<b>Sucesso!</b><br />Seu e-mail foi cadastrado em nossa newsletter!');
-            } else {
-                $alert =  alert::error('<b>Ops, algo deu errado!</b><br />Por favor, insira um e-mail válido!');
-            }
+        // Validação dos campos
 
-            echo "<div class=\"form-result\">{$alert}</div>";
-        }
+        $validator->setCampo('nome')->minChar(5)->obrigatorio();
+        $validator->setCampo('mail')->obrigatorio()->email();
 
-        echo $formulario->render();
+        $validator->showMsgsAfterRequest('form-result');
+
+        echo $form->render();
     ?>
 
 </div> <!-- /container -->

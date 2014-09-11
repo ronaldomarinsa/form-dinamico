@@ -3,6 +3,7 @@
 namespace JRP\Form;
 
 use JRP\Form\Input\Input;
+use JRP\Form\Input\InputInterface;
 
 abstract class FormAbstract {
     private $parametros = ['name', 'method', 'action'];
@@ -67,7 +68,7 @@ abstract class FormAbstract {
         return $this->getParametro('action');
     }
 
-    public final function addInput(Input $campo) {
+    public final function addInput(InputInterface $campo) {
         array_push($this->campos, $campo);
     }
 
@@ -101,14 +102,5 @@ abstract class FormAbstract {
 
     protected final function getFormulario() {
         return $this->formulario;
-    }
-
-    public function render() {
-        $this->gerarFormularioBase();
-        $formularioBase = $this->getFormularioBase();
-        $formularioFinal = "<form name=\"{$this->getName()}\" method=\"{$this->getMethod()}\" action=\"{$this->getAction()}\" class=\"{$this->getClass()}\">{$formularioBase}</form>";
-        $this->setFormulario($formularioFinal);
-
-        return $this->getFormulario();
     }
 } 

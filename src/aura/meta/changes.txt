@@ -1,0 +1,2 @@
+- The Forge::newInstance() method now has a third param, $setters, to allow
+  passing of setter injection values.
